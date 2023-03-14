@@ -5,6 +5,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float horizontalInput;
+    public float speed;
+    public float boundry = 10.0f;
+
+    public GameObject projectilePrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +18,20 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontalInput = horizontalInput.GetAxis("Horizontal")
+        if (transform.position.x < -boundry)
+        {
+            transform.position = new Vector3(-boundry, transform.position.y, transform.position.z);
+        }
+        else if (transform.position.x > boundry)
+        {
+            transform.position = new Vector3(boundry, transform.position.y, transform.position.z);
+        }
+        horizontalInput = Input.GetAxis("Horizontal");
+        transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+        }
     }
 }
