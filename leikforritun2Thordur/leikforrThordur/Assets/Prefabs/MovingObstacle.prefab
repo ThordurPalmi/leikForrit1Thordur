@@ -112,4 +112,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveDistance: 10
   moveSpeed: 2
-  moveAlongX: 1
+  moveAlongX: 0
