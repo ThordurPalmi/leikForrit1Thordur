@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
 
+    public int points;
+
     private bool isGrounded = true;     // fyrir að tékka ef player er á jörð til að vita ef hann má hoppa
 
 
@@ -80,6 +82,13 @@ public class PlayerController : MonoBehaviour
         else if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+        }
+        else if (collision.gameObject.CompareTag("Collectable"))
+        {
+            // Player collected a collectable
+            Destroy(collision.gameObject);
+            points++;
+            Debug.Log("Points: " + points);
         }
     }
 
