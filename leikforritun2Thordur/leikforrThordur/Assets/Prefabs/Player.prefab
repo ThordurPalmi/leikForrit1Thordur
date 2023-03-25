@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5699611131370139284}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 10
-  moveSpeed: 10
+  moveSpeed: 100
   turnSpeed: 100
   lives: 5
   minY: -5

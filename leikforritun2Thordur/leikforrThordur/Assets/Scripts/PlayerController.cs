@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
 
     public int points;
+
+    public string sceneName;
 
     private bool isGrounded = true;     // fyrir að tékka ef player er á jörð til að vita ef hann má hoppa
 
@@ -71,7 +74,7 @@ public class PlayerController : MonoBehaviour
             if (lives <= 0)
             {
                 // Game over
-                Debug.Log("Game over!");
+                SceneManager.LoadScene(sceneName);
             }
             else
             {
@@ -100,7 +103,7 @@ public class PlayerController : MonoBehaviour
             if (lives <= 0)
             {
                 // Game over
-                Debug.Log("Game over!");
+                SceneManager.LoadScene(sceneName);
             }
             else
             {
