@@ -112,11 +112,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 10
-  moveSpeed: 100
+  moveSpeed: 10
   turnSpeed: 100
   lives: 5
   minY: -5
   points: 0
+  sceneName: 
 --- !u!54 &5699611131370139284
 Rigidbody:
   m_ObjectHideFlags: 0
