@@ -4,19 +4,14 @@ using UnityEngine;
 
 public class Water : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-       if (onTriggerEnter(object, other))
+        if (other.CompareTag("Player"))
         {
-            Destroy(gameObject);
-        } 
+
+            Destroy(other.gameObject);
+
+        }
     }
 
 
