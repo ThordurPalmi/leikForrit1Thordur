@@ -1,16 +1,27 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Score : MonoBehaviour
 {
     [SerializeField] private TMP_Text _scoreText;
 
     private int _score;
+    public string sceneName;
 
     void Start()
     {
         _score = 0;
         UpdateScoreText();
+    }
+    void Update()
+    {
+        if (_score >= 280)
+        {
+            SceneManager.LoadScene(sceneName);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
     }
 
     void UpdateScoreText()
@@ -23,4 +34,5 @@ public class Score : MonoBehaviour
         _score += points;
         UpdateScoreText();
     }
+
 }

@@ -10,6 +10,9 @@ public class PlayerHealth : MonoBehaviour
     private float _currentHealth;
     public string sceneName;
 
+    public float CurrentHealth { get { return _currentHealth; } }
+    public float MaxHealth { get { return _maxHealth; } }
+
     void Start()
     {
         _currentHealth = _maxHealth;
@@ -25,6 +28,7 @@ public class PlayerHealth : MonoBehaviour
             Die();
         }
     }
+
     void Die()
     {
         SceneManager.LoadScene(sceneName);
