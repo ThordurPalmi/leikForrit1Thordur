@@ -10,17 +10,17 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1")) // Ef leikmaðurinn ýtir á músarbútinn...
         {
-            Shoot();
+            Shoot(); // Kallar á fallið sem lætur byssuna skjóta.
         }
     }
 
     void Shoot()
     {
-        GameObject bullet = Instantiate(_bulletPrefab, _muzzle.position, _muzzle.rotation);
-        Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
-        bulletRigidbody.AddForce(_muzzle.forward * _bulletSpeed, ForceMode.Impulse);
-        Destroy(bullet, 5f);
+        GameObject bullet = Instantiate(_bulletPrefab, _muzzle.position, _muzzle.rotation); // Býr til nýtt skot af byssunni.
+        Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>(); // Finnur Rigidbody hlutinn í skotinu.
+        bulletRigidbody.AddForce(_muzzle.forward * _bulletSpeed, ForceMode.Impulse); // Lætur skotinu hreyfast í stefnu hljóðmunnar byssunnar.
+        Destroy(bullet, 5f); // Eyðir skotinu eftir 5 sekúndur.
     }
 }

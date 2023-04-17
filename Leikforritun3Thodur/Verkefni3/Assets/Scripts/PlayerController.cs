@@ -9,29 +9,29 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxLookUpAngle = 90f;
     [SerializeField] private float maxLookDownAngle = -90f;
 
-    private float _xRotation = 0f;
-    private float _yRotation = 0f;
+    private float _xRotation = 0f; // Breyta sem heldur utan um snúning á X-ás.
+    private float _yRotation = 0f; // Breyta sem heldur utan um snúning á Y-ás.
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked; // Felum músarbendilinn.
+        Cursor.visible = false; // Felum músarbendilinn.
     }
 
     void Update()
     {
-        // Movement
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-        transform.Translate(direction * moveSpeed * Time.deltaTime);
+        // Hreyfing
+        float horizontal = Input.GetAxisRaw("Horizontal"); // Tekur inn hreyfingar á lárétta ásnum.
+        float vertical = Input.GetAxisRaw("Vertical"); // Tekur inn hreyfingar á lóðréttum ásnum.
+        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized; // Býr til stefnuvektor fyrir hreyfinguna.
+        transform.Translate(direction * moveSpeed * Time.deltaTime); // Hreyfir leikmanninn í rétta átt.
 
-        // Look
-        float mouseX = Input.GetAxisRaw("Mouse X") * lookSpeed * Time.deltaTime;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * lookSpeed * Time.deltaTime;
-        _xRotation += mouseY;
-        _xRotation = Mathf.Clamp(_xRotation, maxLookDownAngle, maxLookUpAngle);
-        _yRotation += mouseX;
-        transform.localRotation = Quaternion.Euler(-_xRotation, _yRotation, 0f);
+        // Snúningur
+        float mouseX = Input.GetAxisRaw("Mouse X") * lookSpeed * Time.deltaTime; // Tekur inn snúning á X-ás með músinni.
+        float mouseY = Input.GetAxisRaw("Mouse Y") * lookSpeed * Time.deltaTime; // Tekur inn snúning á Y-ás með músinni.
+        _xRotation += mouseY; // Bætir við snúningnum á X-ás.
+        _xRotation = Mathf.Clamp(_xRotation, maxLookDownAngle, maxLookUpAngle); // Kallar á Mathf.Clamp() til að takmarka snúninginn á milli lágmarks og hámarks gilda.
+        _yRotation += mouseX; // Bætir við snúningnum á Y-ás.
+        transform.localRotation = Quaternion.Euler(-_xRotation, _yRotation, 0f); // Snýr leikmanninum í rétta átt með nýju snúningi.
     }
 }
