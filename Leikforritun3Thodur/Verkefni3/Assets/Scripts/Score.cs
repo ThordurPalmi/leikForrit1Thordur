@@ -16,7 +16,7 @@ public class Score : MonoBehaviour
     }
     void Update()
     {
-        if (_score >= 280)
+        if (_score >= 180)
         {
             SceneManager.LoadScene(sceneName);
             Cursor.lockState = CursorLockMode.None;
