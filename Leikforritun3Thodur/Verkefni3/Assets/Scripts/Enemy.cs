@@ -6,14 +6,17 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _speed = 5f;
     [SerializeField] private float _maxHealth = 100f;
     [SerializeField] private float _damage = 10f;
+    [SerializeField] private int _scoreValue = 10;
 
     private float _currentHealth;
     private Transform _player;
+    private Score _scoreboard;
 
     void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player").transform;
         _currentHealth = _maxHealth;
+        _scoreboard = FindObjectOfType<Score>();
     }
 
     void Update()
@@ -58,6 +61,7 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
+        _scoreboard.AddScore(_scoreValue);
         Destroy(gameObject);
     }
 }
