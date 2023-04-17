@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Water : MonoBehaviour
 {
+    public string sceneName;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
 
-            Destroy(other.gameObject);
+            SceneManager.LoadScene(sceneName);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
 
         }
     }

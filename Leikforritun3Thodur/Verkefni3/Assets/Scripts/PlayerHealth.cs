@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private float _maxHealth = 100f;
 
     private float _currentHealth;
+    public string sceneName;
 
     void Start()
     {
@@ -25,7 +27,9 @@ public class PlayerHealth : MonoBehaviour
     }
     void Die()
     {
-        Destroy(gameObject);
+        SceneManager.LoadScene(sceneName);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
 }
