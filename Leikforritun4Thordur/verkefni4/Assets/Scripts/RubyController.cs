@@ -3,51 +3,43 @@ using UnityEngine;
 
 public class RubyController : MonoBehaviour
 {
+    // Public breytur sem hægt er að breyta í Unity editor
     public float speed = 4;
-    
-   
     public int maxHealth = 5;
     public float timeInvincible = 2.0f;
     public Transform respawnPosition;
-    
-    
     public AudioClip hitSound;
-    
-    
+
+    // Public get fall sem skilar heildarheilsu leikmannsins
     public int health
     {
         get { return currentHealth; }
     }
-    
-   
+
+    // Private breytur
     Rigidbody2D rigidbody2d;
     Vector2 currentInput;
-    
-    
     int currentHealth;
     float invincibleTimer;
     bool isInvincible;
-   
-    
     Animator animator;
     Vector2 lookDirection = new Vector2(1, 0);
-    
-    
     AudioSource audioSource;
-    
+
     void Start()
     {
-        
+        // Sækjum Rigidbody2D component úr hlutnum sem skriftan er tengd við
         rigidbody2d = GetComponent<Rigidbody2D>();
-                
-        
+
+
+        // Upphafsstillum leikmanns-breytur
         invincibleTimer = -1.0f;
         currentHealth = maxHealth;
-        
-        
+
+        // Sækjum Animator component úr hlutnum sem skriftan er tengd við
         animator = GetComponent<Animator>();
-        
-        
+
+        // Sækjum AudioSource component úr hlutnum sem skriftan er tengd við
         audioSource = GetComponent<AudioSource>();
     }
 
