@@ -456,13 +456,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1584281282501442206, guid: 6809f23136949a9488669a0f58179ef9,
         type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1584281282501442206, guid: 6809f23136949a9488669a0f58179ef9,
+        type: 3}
       propertyPath: m_GravityScale
-      value: 6.27
+      value: 9.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1584281282501442207, guid: 6809f23136949a9488669a0f58179ef9,
+        type: 3}
+      propertyPath: speed
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1584281282501442207, guid: 6809f23136949a9488669a0f58179ef9,
         type: 3}
       propertyPath: jumpForce
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1584281282501442207, guid: 6809f23136949a9488669a0f58179ef9,
         type: 3}

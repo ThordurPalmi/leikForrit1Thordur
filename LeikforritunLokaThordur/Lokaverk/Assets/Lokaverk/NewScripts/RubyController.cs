@@ -48,8 +48,7 @@ public class RubyController : MonoBehaviour
         }
 
         float horizontal = Input.GetAxis("Horizontal");
-        float vertical = 0f;
-        Vector2 move = new Vector2(horizontal, vertical);
+        Vector2 move = new Vector2(horizontal, 0f);
 
         if (!Mathf.Approximately(move.x, 0.0f))
         {
@@ -78,19 +77,16 @@ public class RubyController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            transform.position += Vector3.up * jumpForce;
-            isGrounded = false;
+            Jump();
         }
     }
 
     void FixedUpdate()
     {
-        Vector2 position = rigidbody2d.position;
-        position = position + currentInput * speed * Time.deltaTime;
-        rigidbody2d.MovePosition(position);
-
+        Vector2 velocity = new Vector2(currentInput.x * speed, rigidbody2d.velocity.y);
+        rigidbody2d.velocity = velocity;
     }
 
     public void ChangeHealth(int amount)
@@ -122,7 +118,7 @@ public class RubyController : MonoBehaviour
         ChangeHealth(maxHealth);
         transform.position = respawnPosition.position;
     }
-    
+
     // =============== PROJECTICLE ========================
     void LaunchProjectile()
     {
@@ -130,7 +126,7 @@ public class RubyController : MonoBehaviour
 
         Projectile projectile = projectileObject.GetComponent<Projectile>();
         projectile.Launch(lookDirection, 300);
-        
+
         animator.SetTrigger("Launch");
         audioSource.PlayOneShot(shootingSound);
     }
@@ -148,5 +144,10 @@ public class RubyController : MonoBehaviour
         {
             isGrounded = true;
         }
+    }
+    void Jump()
+    {
+        rigidbody2d.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+        isGrounded = false;
     }
 }
