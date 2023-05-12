@@ -109,8 +109,6 @@ public class RubyController : MonoBehaviour
 
         if (currentHealth == 0)
             Respawn();
-
-        UIHealthBar.Instance.SetValue(currentHealth / (float)maxHealth);
     }
 
     void Respawn()
