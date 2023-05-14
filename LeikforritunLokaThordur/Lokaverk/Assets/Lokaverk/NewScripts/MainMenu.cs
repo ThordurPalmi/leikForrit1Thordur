@@ -3,14 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public string sceneName;
+    public string sceneName;//Hvaða sena
 
     public void StartGame()
     {
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneName);//breyti um senu
     }
     public void QuitGame()
     {
-        Application.Quit();
+        Application.Quit(); // stöðva leikinn
     }
 }
